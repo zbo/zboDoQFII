@@ -4,7 +4,8 @@ from selenium import webdriver
 
 browser = webdriver.Chrome()
 
-def web_call(link, instance):
+
+def east_money_approach(link, instance):
     try:
         browser.get(link)
         qfii_table = browser.find_element_by_id('tb_cgtj')
@@ -37,7 +38,8 @@ def web_call(link, instance):
 
         return True
 
-    except Exception:
+    except Exception as e:
+        print(e)
         print(link)
 
 
@@ -55,7 +57,7 @@ def do(one):
     pair = one[0].split('.')
     link = '''http://data.eastmoney.com/hsgtcg/StockHdStatistics.aspx?stock={0}'''.format(pair[0])
     # http_call(link)
-    web_call(link, one)
+    east_money_approach(link, one)
 
 
 if __name__ == '__main__':
